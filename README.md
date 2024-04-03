@@ -7,7 +7,7 @@ read me file uses markdown syntax to edit any text, formulas or codes.
     // winter, spring, summer, autumn
     // warm jacket, t-shirt, swimming suit, raincoat
 
-    int temperature = -5;
+    int temperature = -5;c
 
     if (temperature < 5) {
       System.out.println("Wear a warm jacket!");
