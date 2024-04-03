@@ -1,0 +1,66 @@
+public class Main {
+
+  public static void main(String[] args) {
+
+    // double eggPrice = 2.50;
+    // double money = 2.50;
+
+    // If eggs cost less than 3 euros
+    // Then buy them
+    // Else
+    // Don't buy them
+
+    if (eggPrice <= money) {
+     System.out.println("This code is showing only");
+     System.out.println("if eggPrice is less than money");
+     System.out.println("Buy the eggs");
+     } else {
+     System.out.println("This code shows only");
+     System.out.println("if eggPrice is more than money");
+     System.out.println("Get some money!");
+
+    // String username = "Mari";
+
+    // if (username != "Mari"){
+    // System.out.println("You're invited to the party!");
+    // } else {
+    // System.out.println("Go home!");
+    // }
+
+    AND logical operator - if both conditions are true
+
+    int temp = 10;
+    if (temp > 30) {
+    System.out.println("It's a hot day");
+     }
+
+     else if (temp >= 20 && temp <= 30) {
+     System.out.println("It's warm outside");
+     }
+     else {
+     System.out.println("It's cold outside");
+     }
+
+    // OR logical operator - if one of the conditions is true
+
+    int age1 = 6;
+    int age2 = 67;
+
+    if (age1 >=10 || age2 <= 18) {
+    System.out.println("You can enter the party!");
+     }
+     else {
+    System.out.println("You can go to another party!");
+     }
+
+
+    
+    // NOT - the opposite of the condition
+
+    int a = 4;
+    int b = 6;
+    boolean c = !(a < b);
+
+    System.out.println(c);
+  }
+}
