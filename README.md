@@ -160,3 +160,38 @@ public class Main {
 
 ```
 
+## story using scanner
+
+```java
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+
+    Scanner input = new Scanner(System.in);
+    System.out.println("Who are you?");
+    String name = input.nextLine();
+    System.out.println("Hello " + name + "!");
+    System.out.println("\nWhat is your favourite colour?");
+    String colour = input.nextLine();
+    System.out.println("Cool! I love " + colour + " too!");
+    System.out.println("\nWhat is your favourite animal?");
+    String animal = input.nextLine();
+    System.out.println("I think " + animal + " is a wonderful creature!");
+    System.out.println("\nWhat is your favourite activity?");
+    String activity = input.nextLine();
+    System.out.println("Ahh, " + activity + ", lovely!");
+    System.out.println("\nWhat is your favourite day?");
+    String day = input.nextLine();
+    System.out.println(day + "s are the best!");
+    System.out.println("\nWhat is your favourite season?");
+    String season = input.nextLine();
+    System.out.println("Let's go, " + season + " fans!");
+
+    System.out.println("\nLet me tell you a little story. On a calm " + season + " " + day + ", " + name + " was walking down a path to engage in " + activity + ", when they noticed a " + colour + " " + animal + ". 'Oh my god,' " + name + " gasped in admiration. 'I must bring this magical creature with me to do some " + activity + " and I will remember this beautiful " + season + " day forever.' From here until eternity, " + name + " and their " + animal + " do everything together.");
+
+    input.close();
+
+  }
+}
+```
