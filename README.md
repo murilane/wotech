@@ -2,6 +2,36 @@ read me file uses markdown syntax to edit any text, formulas or codes.
 
 # java
 
+
+## understanding class and methods
+```java
+public class Main {
+
+  static int sharedValue = 200;
+  
+  public static void main(String[] args) {
+    int mainValue = 14;
+    System.out.println(mainValue);
+    method1();
+    System.out.println(sharedValue);
+
+  }
+  
+  public static void method1(){
+    int firstValue = 50;
+    System.out.println(firstValue);
+    method2();
+  
+  }
+  
+  public static void method2(){
+    int secondValue = 100;
+    System.out.println(secondValue);
+  }
+  
+}
+```
+
 ##  if, else if, else
 ```java
 
