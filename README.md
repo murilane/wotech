@@ -188,7 +188,11 @@ public class Main {
     String season = input.nextLine();
     System.out.println("Let's go, " + season + " fans!");
 
-    System.out.println("\nLet me tell you a little story. On a calm " + season + " " + day + ", " + name + " was walking down a path to engage in " + activity + ", when they noticed a " + colour + " " + animal + ". 'Oh my god,' " + name + " gasped in admiration. 'I must bring this magical creature with me to do some " + activity + " and I will remember this beautiful " + season + " day forever.' From here until eternity, " + name + " and their " + animal + " do everything together.");
+    System.out.println("\nLet me tell you a little story. On a calm " + season + " " + day + ","
++ name + " was walking down a path to engage in " + activity + ", when they noticed a "
++ colour + " " + animal + ". 'Oh my god,' " + name + " gasped in admiration. 'I must bring this
+magical creature with me to do some " + activity + " and I will remember this beautiful " + season +
+" day forever.' From here until eternity, " + name + " and their " + animal + " do everything together.");
 
     input.close();
 
