@@ -266,6 +266,99 @@ public class Main {
 
 }
 ```
+## for loops
+
+```java
+
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+
+
+public class Main {
+  public static void main(String[] args) {
+
+    /*
+
+    Fill the array with random numbers
+
+    Find the sum of all elements in the array.
+    For example in an array like this:
+    [2, 3, 5, 1]
+    Result: 11 (2 + 3 + 5 + 1)
+    
+      */ 
+    
+    int[] arr = new int[10];
+    int sum = 0;
+    
+
+    Random randomNumber = new Random();
+System.out.println("Random numbers: ");
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] = randomNumber.nextInt(-50,50);
+      sum = sum + arr[i];
+      System.out.println(arr[i]);
+      
+
+    }
+   
+    
+    System.out.println("The sum of random numbers: " + sum);
+
+    /* Find all the elements in the array that is below 0
+      [-2, 3, -5, 1]
+      Result:
+      -2
+      -5
+
+*/ 
+    System.out.println("Negative numbers: ");
+    
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] < 0) {
+        System.out.println(arr[i]);
+      }
+      
+    }
+
+/*
+    Fill the party list with people you would like to invite to the party.
+    Check whether or not "Anna" is in the array.
+    Check whether or not "Maris" is in the array.
+    ["Oskars", "Anna", "Andris"]
+    Result: 
+    "Anna is in the party list"
+    "Maris is not in the party list"
+      */
+    Scanner input = new Scanner(System.in);
+    String[] partyList = {"Oskars", "Anna", "Andris"};
+    boolean isInPartyList = false;
+
+    System.out.println("Enter a name: ");
+    String inputName = input.nextLine();
+
+    for (String name : partyList) {
+      if (name.equals(inputName)) {
+        isInPartyList = true; 
+        break;
+      }
+    }
+    if (isInPartyList) {
+      System.out.println(inputName + " is in the party list");
+    }
+    else {
+        System.out.println(inputName + " is not in the party list"); }  
+    
+    
+  }
+
+
+}
+
+```
 
 ## methods
 
@@ -411,6 +504,38 @@ Scanner input = new Scanner(System.in);
 
 ```
 
+```java
+
+public class Main {
+
+  static int sharedValue = 200;
+  
+  public static void main(String[] args) {
+    int mainValue = 14;
+    System.out.println(mainValue);
+    method1();
+    System.out.println(sharedValue);
+
+  }
+  
+  public static void method1(){
+    int firstValue = 50;
+    System.out.println(firstValue);
+    method2();
+  
+  }
+  
+  public static void method2(){
+    int secondValue = 100;
+    System.out.println(secondValue);
+  }
+  
+}
+
+
+```
+
+
 # function of calling a name using methods
 
 ```java
@@ -514,6 +639,154 @@ if (playerChoice.equals(computerChoice)) {
 }
 ```
 
+## arrays
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in); //
+
+    int[] arr = new int[5]; // Bounds is from 0 to 4
+    // We ask the computer to create a closet
+    //Where we could put 5 different boxes of a number
+    arr[0] = 5;
+    arr[1] = 8;
+    arr[2] = 13;
+    arr[3] = 54;
+    arr[4] = 80;
+    // arr[5] Index out of bounds
+
+    for (int i = 0; i < arr.length; i++) { // 0 ... 1 -> 4
+      //int number = scanner.nextInt();
+      //arr[5] = scanner.nextInt();
+      arr[i] = i; // We are overwriting the value of array with i (0, 1, 2, 3, 4)
+
+    }
+
+    for (int i = 0; i < arr.length; i++) { // 0 -> 4
+      System.out.println(arr[i]); // We are accessing arr[3]
+    }
+
+    scanner.close();//
+  }
+}
+
+```
+
+## arrays, cities
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+
+    String[] cities = new String[5];
+
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter 5 cities: ");
+
+    for (int i = 0; i < cities.length; i++) {
+      System.out.println("City " + (i + 1) + ": ");
+      cities[i] = input.nextLine();
+    }
+
+  System.out.println("Cities entered: ");
+
+    for (int i = 0; i < cities.length; i++) {
+      System.out.println(cities[i]);
+    }
+
+      input.close();
+    
+  }
+
+
+}
+
+```
+
+```java
+
+import java.util.Scanner; 
+
+public class Main {
+  public static void main(String[] args) {
+    
+    Scanner input = new Scanner(System.in);
+    int[] numbers = new int[5];
+    
+    System.out.println("Enter 5 numbers:");
+    for (int i = 0; i < numbers.length; i++) { 
+      numbers[i] = input.nextInt();
+    }
+
+
+    int largestNumber = numbers[0];
+    for (int i = 0; i < numbers.length; i++) {
+      if (numbers[i] > largestNumber) {
+        largestNumber = numbers[i];
+      }
+    }
+    System.out.println("The largest number is " + largestNumber);
+
+    int smallestNumber = numbers[0];
+    for (int i = 0; i < numbers.length; i++) {
+      if (numbers[i] < smallestNumber) {
+        smallestNumber = numbers[i];
+      }
+    }
+    System.out.println("The smallest number is " + smallestNumber);
+
+    input.close();
+  }
+}
+
+```
+
+## for loops
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+
+    int[] numbers = { 1, 3, 4, 2, 5, 8 }; // numbers.length = size of the numbers = 6
+
+    System.out.println("Please write your favourite number: ");
+
+    Scanner input = new Scanner(System.in);
+    int favouriteNumber = input.nextInt();
+
+    boolean isFound = false;
+
+    for (int i = 0; i < numbers.length; i++) {
+
+      if (numbers[i] == favouriteNumber) {
+        isFound = true;
+        break; //EXITS THE FOR LOOP ALTOGETHER, ignoring the i < numbers.length
+      }
+
+    }
+    if(isFound){
+      System.out.println("Your favourite number " + favouriteNumber + " is in the array");
+    } else {
+      System.out.println("Your favourite number " + favouriteNumber + " is NOT FOUND!");
+    }
+
+    input.close();
+  }
+}
+
+```
+
+
 ## arrays, for loops
 
 ```java
@@ -616,6 +889,93 @@ public class Main {
 }
 
 ```
+
+```java
+
+
+
+public class Main {
+  public static void main(String[] args) {
+  
+    int[][] array = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    for(int i = 0; i < array.length; i++){
+        //array[0] = {1, 2, 3}
+        //array[0].length = 3
+        int[] row = array[i]; // {1, 2, 3} OR {4, 5, 6} OR, {7, 8, 9}
+        for(int j = 0; j < row.length; j++){
+            System.out.print(row[j]);
+        }
+
+
+
+    }  
+  }
+
+
+}
+
+```
+
+```java
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] array = new int[5][5];
+
+        for (int i = 0; i < array.length; i++) {
+            int[] row = array[i];
+            for (int j = 0; j < row.length; j++) {
+                row[j] = i;
+            }
+        }
+
+        for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < array[i].length; j++){
+                System.out.print(array[i][j] + "|");
+            }
+            System.out.println();
+            System.out.println("----------");
+        }
+    }
+}
+
+```
+
+```java
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] array = new int[10][10];
+
+        for (int i = 0; i < array.length; i++) {
+            int[] row = array[i];
+            for (int j = 0; j < row.length; j++) {
+                row[j] = i*j;
+            }
+        }
+
+        for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < array[i].length; j++){
+                if(array[i][j] < 10){
+                    System.out.print(array[i][j] + "  ");
+                }
+                else{
+                    System.out.print(array[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+```
+
+
 # 3 x 3 grid 2D array
 
 ```java
@@ -697,6 +1057,170 @@ public class Main {
             System.out.println();
         }
     }
+}
+
+```
+
+## triangle
+
+```java
+
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter the number of lines for the triangle: ");
+            int lines = scanner.nextInt();
+
+            for (int i = 1; i <= lines; i++ {
+                for (int j = 1; j <= i; j++) {
+                    System.out.print("_");
+                }
+                System.out.println(); // Move to the next line after printing each line
+            }
+            scanner.close();
+        }
+    }
+
+```
+
+## guess the number 
+
+```java
+
+import java.util.Scanner;
+
+
+
+
+public class Main {
+  public static void main(String[] args) {
+
+    Scanner input = new Scanner(System.in);
+    int guess;
+    int answer = 44;
+
+    boolean correctGuess = true;
+
+    
+  while (correctGuess) {
+    System.out.println("Guess a number between 1 and 100: ");
+    guess = input.nextInt();
+  if (guess < answer) {
+      System.out.println("Too low! Try again.");
+  } else if (guess > answer) {
+      System.out.println("Too high! Try again.");
+  } else {
+      System.out.println("Congratulations! You've guessed the number!");
+  break;
+  }
+    }
+  
+  }
+
+
+}
+```
+## borders 
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the text: ");
+        String text = scanner.nextLine();
+
+        int length = text.length();
+        int maxLength = length + 8;
+
+        // Print the top border
+        printBorder(maxLength);
+
+        // Print the text with side borders
+        System.out.println("|   " + text + "   |");
+
+        // Print the bottom border
+        printBorder(maxLength);
+    }
+
+    public static void printBorder(int length) {
+        System.out.print("=");
+        for (int i = 0; i < length - 2; i++) {
+            System.out.print("=");
+        }
+        System.out.println("=");
+    }
+}
+
+```
+
+```java
+
+public class Main {
+  public static void main(String[] args) {
+    printOutABorder();
+    System.out.println("Hello, you!");
+    int number = getARandomNumber();
+    System.out.println(number);
+
+    int number1 = 5;
+    int number2 = 7;
+    int result = sum(number1, number2);
+      System.out.println(result);
+    printOutABorder();
+
+  }
+
+  public static void printOutABorder() {
+    System.out.println("===========");
+  }
+
+  public static int getARandomNumber() {
+    return 5;
+  }
+  public static int sum(int number1, int number2) {
+    return number1 + number2;
+  }
+}
+
+```
+
+## boolean methods callback
+
+```java
+
+/*
+Write a name and check whether or not it is atleast 3 char long
+Write a surname and check whether or not it is atleast 3 char long
+If it's not, then say. Sorry, your name is too short.
+If both of them are valid, say. Thank you, your information has been registered!
+  */
+
+public class Main {
+  public static void main(String[] args) {
+    String name = "Oskars";
+    String surname = "Klaumanis";
+    boolean isUserNameValid = isNameValid(name);
+    boolean isUserSurnameValid = isNameValid(surname);
+
+    if(isUserNameValid && isUserSurnameValid) {
+      System.out.println("Thank you, your information has been registered!");
+    } else {
+      System.out.println("Sorry, check your information.");
+    }
+  }
+
+public static boolean isNameValid(String nameValue) {
+  if(nameValue.length() < 3) {
+    System.out.println("Sorry, your name is too short.");
+      return false;
+  }
+  return true;
+}
 }
 
 ```
