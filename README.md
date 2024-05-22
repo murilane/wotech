@@ -199,3 +199,505 @@ magical creature with me to do some " + activity + " and I will remember this be
   }
 }
 ```
+
+## arrays
+
+- borders with a definite size
+
+```java
+/*
+1. Create a program, where user can provide a title and a small text below the title.
+Title should be wrapped with ====== at top and bottom, based on the title length.
+Example: 
+System asks for title and user provides "WoTech and Java is easy"
+System asks for description and user provides "I have been learning Java for 6 weeks now."
+
+Result: 
+=======================
+WoTech and Java is easy
+=======================
+
+I have been learning Java for 6 weeks now.
+*/
+
+/*
+1. Create a program, where user can provide a title and a small text below the title.
+Title should be wrapped with ====== at top and bottom, based on the title length.
+Example: 
+System asks for title and user provides "WoTech and Java is easy"
+System asks for description and user provides "I have been learning Java for 6 weeks now."
+
+Result: 
+=======================
+WoTech and Java is easy
+=======================
+
+I have been learning Java for 6 weeks now.
+*/
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter title: ");
+    String title = input.nextLine();
+    System.out.println("Enter description: ");
+    String description = input.nextLine();
+    int length = title.length();
+
+    System.out.println("\n\n");
+    printBorder(title);
+    System.out.println(title);
+    printBorder(title);
+    System.out.println("\n");
+    System.out.println(description);
+  }
+
+  public static void printBorder(String text) {
+     int length = text.length();
+    for (int i = 0; i < length; i++) {
+      System.out.print("=");
+    }
+    System.out.println();
+  
+
+  }
+
+}
+```
+
+## methods
+
+```java
+
+
+public class Main {
+  public static void main(String[] args) {
+    int number = 51;
+
+    checkNumber(number);
+
+    int number2 = 49;
+
+    checkNumber(number2);
+    }
+
+  // void is just for action
+  // int is for returning a number
+  // String is for returning a string
+  // double is for returning a double
+  // boolean is for returning a boolean
+  // good practice is to use return type and use systemoutprintln only in the main method
+  public static void checkNumber (int value) {
+    if(value > 50) {
+      System.out.println("The number is greater than 50");
+    } else if (value < 50) {
+      System.out.println("The number is less than 50");
+    } else {
+      System.out.println("The number is equal to 50");
+      }
+  }
+}
+
+```
+
+```java
+
+public class Main {
+  public static void main(String[] args) {
+    int number1 = 7;
+    int number2 = 12;
+    int number3 = 18;
+
+    int result = sum(number1, number2);
+    int finalResult = sum(result, number3);
+
+    System.out.println(finalResult);
+    
+  }
+public static int sum(int a, int b) {
+  return a + b;
+}
+  
+}
+
+```
+# get numbers + methods
+
+```java
+
+
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    /*
+    1. Create a function that returns smallest number of 2 numbers.
+
+    For example:
+    User provides 5
+    User provides 7
+
+    Function returns 5
+    Main function prints out:
+    5 is the smallest number
+      */
+    Scanner input = new Scanner(System.in);
+    System.out.println("Enter a number: ");
+    int number1 = getNumber();
+    System.out.println("Enter another number: ");
+    int number2 = getNumber();
+    int result = smallestNumber(number1, number2);
+    System.out.println("The smallest number is " + result);
+
+    smallestNumber(number1, number2);
+    
+    }
+    public static int getNumber() {
+  Scanner input = new Scanner(System.in);
+  int number = input.nextInt();
+  return number;
+
+}
+    public static int smallestNumber(int a, int b) {
+      if (a < b) {
+        return a;
+      }
+      else {
+        return b;
+      }
+  }
+
+  
+}
+
+```
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+
+    
+Scanner input = new Scanner(System.in);
+    System.out.println("Enter number: ");
+    int num1 = getNumber();
+    System.out.println("Enter number: ");
+    int num2 = getNumber();
+    System.out.println("Enter number: ");
+    int num3 = getNumber();
+    int result = multiply(num1, num2, num3);
+
+    System.out.println(num1 + " * " + num2 + " * " + num3 + " = " + result);
+  }
+
+
+  public static int getNumber() {
+Scanner input = new Scanner(System.in);
+    int num = input.nextInt();
+    return num;
+
+    
+   }
+
+  public static int multiply(int num1, int num2, int num3) {
+    int sum = num1 * num2 * num3;
+    return sum;
+  }
+
+}
+
+```
+
+# function of calling a name using methods
+
+```java
+
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    /*
+    3. Create a function that returns a combination of first name and last name
+    User provides "Oskars"
+    User provides "Klaumanis"
+
+    Function receives both of the names and returns "Oskars Klaumanis"
+    Main function prints out the result
+      */
+  Scanner input = new Scanner(System.in);
+    System.out.println("Enter your first name: ");
+    String firstName = getName();
+   System.out.println("Enter your surname: ");
+    String surName = getName();
+
+    String result = namesCombined(firstName, surName);
+    System.out.println("Your name is " + result);
+  }
+  
+  public static String getName() {
+Scanner input = new Scanner (System.in);
+    String name = input.nextLine();
+      
+      return name;
+    
+  }
+public static String namesCombined(String firstName, String surName) {
+  return firstName + " " + surName;
+}
+
+}
+
+```
+
+## rock, paper, scissors
+
+```java
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+  public static void main(String[] args) {
+    
+  
+  Scanner input = new Scanner(System.in);
+  System.out.println("Let's play Rock, Paper, Scissors!");
+  System.out.println("Enter your choice (rock, paper, scissors): ");
+ 
+  String playerChoice = getPlayerChoice();
+  System.out.println("You chose: " + playerChoice);
+
+
+
+  String computerChoice = getComputerChoice();
+  System.out.println("Computer chose: " + computerChoice);
+
+  String result = getResult(playerChoice, computerChoice);
+  System.out.print(result);
+
+  
+
+    }
+  
+public static String getPlayerChoice () {
+  Scanner input = new Scanner(System.in);
+  String playerChoice = input.nextLine().toLowerCase();
+  return playerChoice;
+
+
+}
+
+public static String getComputerChoice () {
+String[] choices = {"rock", "paper", "scissors"};
+  Random compRandom = new Random();
+  int randomIndex = compRandom.nextInt(choices.length);
+  return choices[randomIndex];
+  
+}
+
+public static String getResult (String playerChoice, String computerChoice) {
+  
+if (playerChoice.equals(computerChoice)) {
+  return "It's a tie!";
+}
+  else if ((playerChoice.equals("rock") && computerChoice.equals("scissors")) || (playerChoice.equals("paper") && computerChoice.equals("rock")) || (playerChoice.equals("scissors") && computerChoice.equals("paper"))) {
+    return "You win!";
+    }
+  else {
+    return "Computer wins!";
+  }
+  
+  }
+}
+```
+
+## arrays, for loops
+
+```java
+
+
+
+public class Main {
+  public static void main(String[] args) {
+    
+    /* 
+    1. Go through the array - for loop
+    2. Find a number less than our number - if
+    3. Increment index by 1
+    4. Return index
+    5. If we can't find the number that is less than our number, return total count +1
+
+    */
+
+    int[] arr = {8, 7, 5, 3, 2, 1}; // current race results
+    int number = 1; // hardcoded number = our result
+    int place = getThePlace(arr, number);
+    System.out.println("Our place in the race is " + place);
+  
+  } 
+
+  public static int getThePlace(int[] arr, int number) {
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] < number) {
+        return i + 1; // return index + 1
+      }
+    }
+    return arr.length + 1; //return total count + 1 
+    }
+  
+}
+
+```
+
+## prime numbers
+
+```java
+
+
+   /*
+1. Go through the numbers from 2 to (numer -1)
+2. check whether or ot it is dividable (number % i == 0)
+3. if the 2nd point is true, then it is a prime number
+4. if the 2nd point is false then it is not a prime number
+5. print the result
+    */
+    public class Main {
+        public static void main(String[] args) {
+            for(int i = 0; i < 100; i++){
+                boolean isAPrimeNumber = isPrime(i);
+                System.out.println(i + " is a prime number - " + isAPrimeNumber);
+            }
+        }
+
+        public static boolean isPrime(int number){
+            for(int i = 2; i < number; i++){
+                if(number % i == 0){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+```
+## 2D arrays
+
+```java
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] array = new int[5][5];
+     int counter = 1;
+        for (int i = 0; i < array.length; i++) {
+            
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = counter;
+                counter++;
+            }
+          
+        }
+
+      for(int i = 0; i < array.length; i++){
+          for(int j = 0; j < array[i].length; j++){
+              if(array[i][j] < 10){
+                  System.out.print(array[i][j] + "  ");
+              }
+              else{
+                  System.out.print(array[i][j] + " ");
+              }
+          }
+          System.out.println();
+      }
+        
+    }
+}
+
+```
+# 3 x 3 grid 2D array
+
+```java
+
+import java.util.Random;
+
+public class Main {
+  public static void main(String[] args) {
+int[][] grid = new int[3][3];
+    Random randomNumber = new Random();
+    int randomIndex = randomNumber.nextInt(grid.length);
+
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[i].length; j++) {
+        grid[i][j] = randomNumber.nextInt(9) + 1;
+      } 
+      
+    }
+    
+    for(int i = 0; i < grid.length; i++){
+        for(int j = 0; j < grid[i].length; j++){
+            if(grid[i][j] < 10){
+                System.out.print(grid[i][j] + "  ");
+            }
+            else{
+                System.out.print(grid[i][j] + " ");
+            }
+        }
+        System.out.println();
+    }
+  }
+}
+
+```
+
+# 2D array - bombing of ships game
+
+```java
+
+public class Main {
+    public static void main(String[] args) { // Main method
+        int size = 10;
+        int[][] grid = new int[size][size];
+        int bombColumn = 1;
+        int bombRow = 0;
+        // 1 1 1 0 0 0 0 0 0 0
+        // 1 5 1 0 0 0 0 0 0 0
+        // 1 1 1 0 0 0 0 0 0 0
+        // 0 0 0 0 0 0 0 0 0 0
+        // .... times 10
+
+        grid[bombRow][bombColumn] = 5; // Center
+        if(bombRow != 0) {
+            grid[bombRow - 1][bombColumn] = 1; // Top middle
+            grid[bombRow - 1][bombColumn - 1] = 1; // top left
+            grid[bombRow - 1][bombColumn + 1] = 1; // top right
+        }
+      if(bombRow != size - 1){
+        grid[bombRow + 1][bombColumn] = 1; // bottom middle
+        grid[bombRow + 1][bombColumn - 1] = 1; //bottom left
+        grid[bombRow + 1][bombColumn + 1] = 1; //bottom right
+        }
+        grid[bombRow + 1][bombColumn] = 1; // bottom middle
+        grid[bombRow + 1][bombColumn - 1] = 1; //bottom left
+        grid[bombRow + 1][bombColumn + 1] = 1; //bottom right
+
+        grid[bombRow][bombColumn - 1] = 1; // middle left
+        grid[bombRow][bombColumn + 1] = 1; //middle right
+
+
+        printArray(grid, size);
+    }
+
+    public static void printArray(int[][] array, int size) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(array[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+```
+
