@@ -1269,3 +1269,82 @@ public class Main {
 }
 
 ```
+
+## arraylists
+
+```java
+
+import java.util.ArrayList;
+import java.util.stream.Collectors; 
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+// initialising arraylist
+    ArrayList<String> shopItems = new ArrayList<String>();
+
+    Scanner input = new Scanner(System.in);
+
+   
+
+    while (true) {
+      System.out.println("Enter item to the store: ");
+      String item = input.nextLine();
+
+      if(item.equals("exit")) {
+        break;
+      }
+      
+      addItems(shopItems, item);
+
+      }
+
+    printArrayList(shopItems);
+    System.out.println("Enter items to remove: ");
+    String itemToRemove = input.nextLine();
+
+    shopItems.removeIf(item -> item.equals(itemToRemove));
+
+    printArrayList(shopItems);
+
+    ArrayList<String> filteredArrayList = new ArrayList<String>();
+
+    for (String item: shopItems) {
+      if(item.length() <= 5){
+        filteredArrayList.add(item);
+      }
+
+    printArrayList(filteredArrayList);
+      
+    }
+    
+    
+    // initialise arraylist
+    // create an element in the arraylist
+    // remove an element
+    // get the elements
+    
+  }
+
+  public static void printArrayList(ArrayList<String> items) {
+    clearConsole();
+    System.out.println("Items in the store: ");
+    for (String item : items)
+      {System.out.println(item);
+        }
+  }
+
+  public static void addItems(ArrayList<String> shopItems, String item) {
+    clearConsole();
+    shopItems.add(item);
+    System.out.println(item + " has been added to the store.");
+  }
+
+  public static void clearConsole(){
+      System.out.print("\033[H\033[2J");
+      System.out.flush();
+  }
+  
+}
+
+```
