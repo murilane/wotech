@@ -1225,3 +1225,47 @@ public static boolean isNameValid(String nameValue) {
 
 ```
 
+## collections
+
+```java
+
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    ArrayList<String> shopItems = new ArrayList<String>();
+
+    shopItems.add("Glass Table");
+    shopItems.add("Wooden Table");
+    shopItems.add("Round Table");
+    shopItems.add("Doors");
+    shopItems.add("Trapdoor");
+    shopItems.add("Couch");
+    shopItems.add("Bed");
+    shopItems.add("Sofa");
+
+
+
+    
+    shopItems
+      .stream() //in between stream and collect, can do actions
+      .filter(item -> item.contains("Table"))
+      // .skip(3) // can skip first 3 items
+      // .limit(2) // taking only the remaining first two items
+      .forEach(item -> print("TEST " + item));
+      
+
+    
+    
+  }
+
+  public static void print(String text) {
+    System.out.println();
+    System.out.println(text);
+  }
+
+}
+
+```
