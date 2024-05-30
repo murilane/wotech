@@ -1348,3 +1348,52 @@ public class Main {
 }
 
 ```
+
+## arraylist homework 22052024
+
+```java
+
+/*Easy: Create an arrayList for integers
+Add 5 numbers.
+
+Filter the arrayList and print out only numbers that divide by 2 
+(number % 2 == 0)
+
+
+  */
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+    ArrayList<Integer> filteredNumbers = new ArrayList<Integer>();
+    Scanner input = new Scanner(System.in);
+
+    for (int i = 0; i < 5; i++) {
+        System.out.println("Enter a number: ");
+        int number = input.nextInt();
+        addNumbers(numbers, number);
+    }
+
+    System.out.println(numbers);
+
+    for (int number : numbers) {
+      if (number % 2 == 0) {
+      filteredNumbers.add(number);
+      }
+    }
+
+  System.out.println(filteredNumbers);
+    
+    
+  }
+
+  public static void addNumbers(ArrayList<Integer> numbers, int number) {
+    numbers.add(number);
+  }
+}
+
+```
