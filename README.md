@@ -1397,3 +1397,134 @@ public class Main {
 }
 
 ```
+
+## book application
+Main.Java:
+```java
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+
+    Scanner input = new Scanner(System.in);
+    ArrayList<Book> books = new ArrayList<Book>();
+   
+    
+    System.out.println("Welcome to the book management app!");
+    
+    
+    while (true) {
+      
+      System.out.println();
+      System.out.println("What would you like to do?");
+      System.out.println("1. Add a book");
+      System.out.println("2. Remove a book");
+      System.out.println("3. View your books");
+      System.out.println("4. Exit");
+      System.out.println("Please choose a number from 1 to 4.");
+      System.out.println();
+
+      int userChoice = input.nextInt();
+      input.nextLine();
+
+      
+      if (userChoice == 1) {
+        addBook(books);
+        
+      }
+      else if (userChoice == 2) {
+        removeBook(books);
+        
+      }
+      else if (userChoice == 3) {
+        viewBooks(books);
+        
+      }
+      else if (userChoice == 4) {
+        System.out.println("Thank you for using the book management app!");
+        break;
+      }
+      else {
+        System.out.println("Invalid input. Please choose a number from 1 to 4.");
+      }
+    } 
+  
+
+  }
+  public static void addBook(ArrayList<Book> books) {
+    Scanner addBook = new Scanner(System.in);
+    System.out.println("Enter the title of the book: ");
+    
+    String title = addBook.nextLine();
+    System.out.println("Enter the author of the book: ");
+    String author = addBook.nextLine();
+    System.out.println("Enter the year the book was published: ");
+    int year = addBook.nextInt();
+    
+
+    Book book = new Book(title, author, year);
+    books.add(book);
+    System.out.println();
+    System.out.println("The book has been added to your library.");
+  }
+
+  public static void removeBook(ArrayList<Book> books) {
+  Scanner removeBook = new Scanner(System.in);
+  System.out.println("Enter the title of the book you would like to remove: ");
+  String removeTitle = removeBook.nextLine();
+
+if (books.removeIf(book -> book.getTitle().equalsIgnoreCase(removeTitle))) {
+  System.out.println();
+  System.out.println("The book has been removed from your library."); }
+
+else {
+  System.out.println();
+  System.out.println("This book is not in your library. Try again.");
+}
+    }
+
+  public static void viewBooks(ArrayList<Book> books) {
+    System.out.println("Your books: ");
+   for (Book book : books) {
+     System.out.println(book.showBooks());
+   } 
+  }
+
+
+}
+
+```
+Book.Java:
+```java
+public class Book{
+  public String title;
+  public String author;
+  public int year;
+
+
+  public Book(String title, String author, int year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public String getAuthor() {
+    return author;
+  }
+
+  public int getYear() {
+    return year;
+  }
+
+  public String showBooks() {
+    return title + " by " + author + " (" + year + ")";
+  }
+  
+}
+```
