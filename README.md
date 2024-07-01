@@ -1528,3 +1528,138 @@ public class Book{
   
 }
 ```
+
+## task manager
+
+Main.Java:
+```java
+import java.util.Scanner;
+
+public class Main {
+// everything in the main class will be able to use TaskManager
+  public static TaskManager taskManager = new TaskManager();
+  public static void main(String[] args) {
+    // main should be the only place to use scanner
+    // main should be the only place to use system.println
+    // main class is the "front end" or UI for you
+
+    // static use only in the main class
+
+   
+//create a menu:
+    //use scanner
+    // if the user presses 1, we call createTask
+    // if the user presses 2, we call showTodoList
+    // if the user presses 3, mark a task with isDone = true
+    // put it in a while loop
+    // if the user presses x, close the loop
+
+    while(true){
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Press 1 to create a task");
+      System.out.println("Press 2 to show the to-do list");
+      System.out.println("Press 3 to set the task as done");
+
+      var userInput = scanner.nextLine();
+
+      if(userInput.equals("1")){
+        createTask();
+      }else if(userInput.equals("2")){
+        showTodoList();
+      }else if(userInput.equals("3")){
+        showTodoList();
+        System.out.println("Enter the task name you want to mark as done: ");
+        var taskName = scanner.nextLine();
+        taskManager.setTasksAsDone(taskName);
+      }else{
+        break;
+      }
+        
+      
+    }
+
+    
+    
+  }
+
+  public static void createTask(){
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Please input a task: ");
+      String name = scanner.nextLine();
+
+    System.out.println("Please input the task description: ");
+      String description = scanner.nextLine();
+
+    var task = new Task(name, description);
+    taskManager.addTask(task);
+    
+  }
+
+  public static void showTodoList(){
+    var tasks = taskManager.getTasks();
+    for(var task : tasks){
+      System.out.println(task.name);
+  System.out.println(task.description);
+      System.out.println(task.isDone);
+    }
+  }
+
+ 
+}
+```
+Task.java:
+```java
+// managing specific tasks
+
+public class Task{
+  //name, description, date, itIsDone
+  public String name;
+  public String description;
+  public boolean isDone;
+
+// var task = new Task(name, description)
+  // boolean default value is false
+  
+  public Task(String name, String description){
+    this.name = name;
+    this.description = description;
+  }
+}
+```
+TaskManager.java:
+```java
+// managing multiple tasks
+
+import java.util.ArrayList;
+public class TaskManager{
+  // MVP: minimum viable product
+  // be able to add a task
+  // have a list of all the tasks
+  // set a task as done, by task name
+
+  public ArrayList <Task> tasks = new ArrayList<Task>();
+
+ // this function can access the task arraylist and add some values to it 
+  public void addTask(Task task) {
+    tasks.add(task);
+  }
+
+  public ArrayList<Task> getTasks(){
+    return tasks;
+    }
+  
+  public void setTasksAsDone(String taskName){
+    tasks.stream()
+      .filter(x -> x.name.equals(taskName))
+      .findFirst()
+      .ifPresent(x -> x.isDone = true);
+      
+  
+  }
+  
+ 
+
+  
+}
+```
