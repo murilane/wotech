@@ -1839,3 +1839,45 @@ public void updateItem(int id, String name, int cost){
   }
 }
 ```
+#intelliJ
+```java
+@GetMapping("/ping")
+	public String ping() {
+		return "pong";
+	}
+
+	@GetMapping("/hello")
+	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+		return String.format("Hello %s!", name); // "Hello " + name;
+	}
+
+	@GetMapping("/getbook")
+	public Book getBook(){
+		var book = new Book();
+		book.title = "book title";
+		book.author = "book author";
+
+		return book;
+	}
+	@PostMapping("/postexample")
+	public Book addBook(@RequestBody Book book){
+		book.title = book.title.toUpperCase();
+		return book;
+	}
+	@PostMapping("/authorize")
+	public User authorize(@RequestBody Credentials credentials){ //username + password
+
+		if(credentials.username.equals("murilane") && credentials.password.equals("1234")){
+			var user = new User();
+			user.name = "Mari";
+			return user;
+
+		}
+		return null;
+
+
+	}
+
+	// we want the user to be able to authorise, by using username and password
+	// and then we provide a profile of the user (name, surname, age, email)
+```
