@@ -1881,3 +1881,423 @@ public void updateItem(int id, String name, int cost){
 	// we want the user to be able to authorise, by using username and password
 	// and then we provide a profile of the user (name, surname, age, email)
 ```
+
+````
+
+package sprint;
+
+import java.util.Scanner;
+
+public class CypherTool {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in); // Used for reading user input
+
+<<<<<<< HEAD
+        System.out.println("\nWelcome to the Cypher tool!\n");
+
+        // Main program loop runs until user exits
+=======
+>>>>>>> ee22b37 (Cyphering)
+        while (true) {
+
+            InputData input = InputData.getInput(scanner); // collects user input
+
+            if (input == null) {
+                System.out.println("\nSee you later!\n");
+                break; // Exits the program
+            }
+
+            String result = ""; // Empty string declaration to store data later.
+
+            // ROT13 encryption/decryption
+            if (input.cypher.equals("rot13")) {
+                if (input.operation.equals("encrypt")) {
+                    result = encryptRot13(input.message);
+                    System.out.println("\nEncrypted message (ROT13): \n");
+                } else {
+                    result = decryptRot13(input.message);
+                    System.out.println("\nDecrypted message (ROT13):\n");
+                }
+            }
+            // Atbash encryption/decryption
+            else if (input.cypher.equals("atbash")) {
+                if (input.operation.equals("encrypt")) {
+                    result = encryptAtbash(input.message);
+                    System.out.println("\nEncrypted message (Atbash):\n");
+                } else {
+                    result = decryptAtbash(input.message);
+                    System.out.println("\nDecrypted message (Atbash):\n");
+                }
+            }
+            // Opposite encryption/decryption
+            else if (input.cypher.equals("opposite")) {
+                if (input.operation.equals("encrypt")) {
+                    result = encryptOpposite(input.message);
+                    System.out.println("\nEncrypted message (Opposite):\n");
+                } else {
+                    result = decryptOpposite(input.message);
+                    System.out.println("\nDecrypted message (Opposite):\n");
+                }
+            }
+
+            System.out.println(result + "\n"); // Print final result
+        }
+
+        scanner.close(); // Close scanner when done
+
+<<<<<<< HEAD
+    }
+
+    // Class for storing and handling user input
+    public static class InputData {
+        public String operation;
+        public String cypher;
+        public String message;
+=======
+        }
+            
+        
+>>>>>>> ee22b37 (Cyphering)
+
+        // Method to collect input data via scanner
+        public static InputData getInput(Scanner scanner) {
+            InputData input = new InputData(); // container to store all input values
+
+            // Loops until correct operation is chosen or 'exit' typed
+            while (true) {
+
+                System.out.println("Select operation:");
+                System.out.println("1. Encrypt");
+                System.out.println("2. Decrypt");
+                System.out.println("Type 'exit' to quit the program\n");
+
+                String opChoice = scanner.nextLine().trim();
+
+                if (opChoice.equalsIgnoreCase("exit")) {
+                    return null;
+                }
+
+                if (opChoice.equals("1")) {
+                    input.operation = "encrypt";
+                    break;
+                } else if (opChoice.equals("2")) {
+                    input.operation = "decrypt";
+                    break;
+                } else {
+                    System.out.println("\nInvalid operation. Choose operation number or type 'exit' to quit.\n");
+                }
+
+            }
+
+            while (true) { // This loop checks for user input to determine which cypher to choose.
+                System.out.println("\nSelect number to cypher:");
+                System.out.println("1. ROT13");
+                System.out.println("2. Atbash");
+                System.out.println("3. Opposite\n");
+
+                String cyChoice = scanner.nextLine().trim(); // Use scanner on next line to find out what user has
+                                                             // typed.
+
+                if (cyChoice.equalsIgnoreCase("exit")) {
+                    return null;
+                }
+
+                if (cyChoice.equals("1")) {
+                    input.cypher = "rot13";
+                    break;
+                } else if (cyChoice.equals("2")) {
+                    input.cypher = "atbash";
+                    break;
+                } else if (cyChoice.equals("3")) {
+                    input.cypher = "opposite";
+                    break;
+                } else {
+                    System.out.println("\nInvalid operation. Choose cypher number or type 'exit' to quit.\n");
+                }
+
+            }
+
+            while (true) {
+                System.out.println("\nEnter the message:");
+                String message = scanner.nextLine().trim();
+                if (message.equalsIgnoreCase("exit")) {
+                    return null;
+                }
+
+                if (!message.isEmpty()) { // If user input is empty, prompts to try again or exit program.
+                    input.message = message;
+                    break;
+                } else {
+                    System.out.println("\nMessage can't be empty. Try again or type 'exit' to quit.\n");
+                }
+            }
+            return input;
+        }
+
+    }
+
+    // Method for encrypting ROT13
+    public static String encryptRot13(String message) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < message.length(); i++) {
+            char c = message.charAt(i);
+            if (Character.isUpperCase(c)) { // Apply the ROT13 cypher for upperCase letters
+                result.append((char) ('A' + (c - 'A' + 13) % 26)); //
+            } else if (Character.isLowerCase(c)) { // Apply the ROT13 cypher for lowerCase letters
+                result.append((char) ('a' + (c - 'a' + 13) % 26));
+            } else { // Non-alphabetic characters remain unchanged
+                result.append(c);
+            }
+        }
+
+        return result.toString();
+    }
+
+    // Method for decrypting ROT13
+    public static String decryptRot13(String message) {
+        return encryptRot13(message);
+    }
+
+    public static String encryptAtbash(String sentence) {
+        StringBuilder result = new StringBuilder();
+
+        // loop through each character in the input sentence
+        for (char c : sentence.toCharArray()) {
+            if (c >= 'a' && c <= 'z') {
+                char encodedLow = (char) ('z' - (c - 'a')); // 122 - (ch=b=98 - 97 = 1) = 121 = y in ascii - explained
+                // Apply the Atbash cipher for lowerCase letters
+                // 'a' maps to 'z', 'b' maps to 'y', etc.
+                result.append(encodedLow); // Append the encoded character to the result
+            } else if (c >= 'A' && c <= 'Z') { // Apply the Atbash cipher for upperCase letters
+                char encodedUp = (char) ('Z' - (c - 'A'));
+                result.append(encodedUp);
+            } else { // Non-alphabetic characters remain unchanged
+
+                result.append(c);
+            }
+        }
+
+        return result.toString(); // Return the result and convert char to string.
+    }
+
+    public static String decryptAtbash(String sentence) {
+        // Since Atbash is symmetric, just call encryptAtbash again to decode.
+        return encryptAtbash(sentence);
+
+    }
+
+    // Since Opposite encryption/decryption is same, calling the same method for
+    // both encrypt and decrypt works.
+
+    public static String encryptOpposite(String message) {
+        StringBuilder result = new StringBuilder();
+
+        // Iterate backwards through the string (reverse order to flip the letters)
+        for (int i = message.length() - 1; i >= 0; i--) {
+            char c = message.charAt(i);
+            if (Character.isUpperCase(c)) {
+                result.append(Character.toLowerCase(c));
+            } else if (Character.isLowerCase(c)) {
+                result.append(Character.toUpperCase(c));
+            } else {
+                result.append(c); // Leave everything except letters unchanged
+            }
+        }
+
+        return result.toString(); // Return final message
+    }
+
+    public static String decryptOpposite(String message) {
+        return encryptOpposite(message); // Opposite cipher is symmetric
+    }
+}
+```
+
+Lauri oma:
+
+import java.util.Scanner;
+import sprint.*;
+
+public class CypherTool {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Cypher tool!");
+
+        InputData input = getInput(scanner);
+
+        switch (input.operation) {
+            case "encrypt":
+                switch (input.cypher) {
+                    case "ROT13":
+        
+                        break;
+                    case "Atbash":
+                        String result = Atbash.encryptAtbash(input.message);
+                        System.out.println(result);
+                        break;
+                    case "Opposite":
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "decrypt":
+                switch (input.cypher) {
+                    case "ROT13":
+        
+                        break;
+                    case "Atbash":
+                    String result = Atbash.decryptAtbash(input.message);
+                    System.out.println(result);
+                        break;
+                    case "Opposite":
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static InputData getInput(Scanner scanner) {
+
+        InputData input = new InputData();
+
+        input.operation = "";
+        input.cypher = "";
+        input.message = "";
+
+        while (true) {
+
+            System.out.println("Select operation:");
+            System.out.println("1. Encrypt");
+            System.out.println("2. Decrypt");
+            System.out.println("Type 'exit' to quit the program");
+
+            String operationChoice = scanner.nextLine().trim().toLowerCase();
+
+            if (operationChoice.equals("1")) {
+                input.operation = "encrypt";
+                break;
+            } else if (operationChoice.equals("2")) {
+                input.operation = "decrypt";
+                break;
+            } else if (operationChoice.equals("exit")) {
+                return null;
+            } else {
+                System.out.println("Invalid operation. Try again.\n");
+            }
+
+        }
+
+        while (true) {
+            System.out.println("Select cypher:");
+            System.out.println("1. ROT13");
+            System.out.println("2. Atbash");
+            System.out.println("3. Opposite");
+            System.out.println("Type 'exit' to quit the program");
+
+            String cypherChoice = scanner.nextLine().trim().toLowerCase();
+
+            if (cypherChoice.equals("1")) {
+                input.cypher = "ROT13";
+                break;
+            } else if (cypherChoice.equals("2")) {
+                input.cypher = "Atbash";
+                break;
+            } else if (cypherChoice.equals("3")) {
+                input.cypher = "Opposite";
+                break;
+            } else if (cypherChoice.equals("exit")) {
+                return null;
+            } else {
+                System.out.println("Invalid operation. Try again.\n");
+            }
+
+        }
+        while (true) {
+            System.out.println("Please type your message: ");
+            input.message = scanner.nextLine().trim().toLowerCase();
+
+            break;
+        }
+
+        return input;
+
+    }
+
+}
+
+````
+package sprint;
+
+public class ArrayAdder {
+    public static int[] concatArrays(int[] arr1, int[] arr2) {
+        int[] result = new int[arr1.length + arr2.length];
+
+        // elements from the first array to the result
+        for (int i = 0; i < arr1.length; i++) {
+            result[i] = arr1[i];
+        }
+        // adding the second array to the result (with the first array in the result already)
+        for (int i = 0; i < arr2.length; i++) {
+            result[arr1.length + i] = arr2[i];
+        }
+
+        return result;
+    }
+}
+
+
+package sprint;
+
+public class ArrayInitializer {
+    public int[] fillArray(int max) {
+        int[] arr = new int[max];
+
+        if (max < 1) {
+            return new int[0];
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i + 1;
+        }
+
+        return arr;
+    }
+}
+
+package sprint;
+
+import java.util.List;
+
+public class ListManipulator {
+
+    public List<String> manipulateList(List<String> list) {
+        if (list.isEmpty()) {
+            return list;
+        }
+
+        list.remove(list.size() - 1); // remove last element
+
+        list.set((list.size()- 1), "The size of the list is " + list.size()); //set 
+        list.add("last");
+
+        list.set(0, "first");
+
+        return list;
+
+
+
+
+
+    }
+}
+
+
